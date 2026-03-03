@@ -27,8 +27,8 @@ Takes user inputs about their location, panel specs, and roof dimensions, then c
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/solar-potential-calculator.git
-cd solar-potential-calculator
+git clone https://github.com/anujsharma-codex/01_SOLAR_POTENTIAL_CALCULATOR.git
+cd 01_SOLAR_POTENTIAL_CALCULATOR
 
 # No dependencies to install — pure Python 3
 python main.py
