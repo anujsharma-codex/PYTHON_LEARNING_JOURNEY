@@ -50,8 +50,8 @@ def create_residential_finance_obj(residential_obj):
     return ResidentialFinance(residential_obj)
      
 
-def create_commercial_obj(consumer,gst_input_credit,solar_system_obj,energy_generation_obj,location_obj,utils_obj):
-    return  Commercial(consumer,gst_input_credit,solar_system_obj,energy_generation_obj,location_obj,utils_obj)
+def create_commercial_obj(consumer,solar_system_obj,energy_generation_obj,location_obj,utils_obj,gst_input_credit):
+    return Commercial(consumer,solar_system_obj,energy_generation_obj,location_obj,utils_obj,gst_input_credit)
     
 
 def create_commercial_finance_obj(commercial_obj):

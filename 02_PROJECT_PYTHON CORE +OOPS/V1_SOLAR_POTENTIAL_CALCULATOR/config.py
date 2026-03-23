@@ -51,7 +51,7 @@ CITY_PEAK_SUN_HOURS={'Ahmedabad':6.5,
 'Indore':6.8,
 'Jaipur':6.5
 }
-Kw
+
 CENTRAL_STATE_MAX_COMBINED_SUBSIDY={'Ahmedabad':{'1kw':35000,'2kW':67500,'3kW':88000,'4kW':90000,'5kW+':93000},
 'Dehradun':{'1kw':53000,'2kW':100000,'3kW':132000,'4kW':132000,'5kW+':132000},
 'Delhi':{'1kw':32000,'2kW':64000,'3kW':84000,'4kW':86000,'5kW+':88000},
