@@ -1,3 +1,25 @@
+# Python distribution / installation
 __pycache__/
-   *.pyc
-   .DS_Store
+*.py[cod]
+*$py.class
+*.pyd
+
+# Environments
+.env
+.venv
+venv/
+env/
+ENV/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS related
+.DS_Store
+Thumbs.db
+
+# Notebooks
+.ipynb_checkpoints/

@@ -1,7 +1,7 @@
 # all constraints here
 import numpy as np
 RESIDENTIAL_CONFIG=np.array(
-    [58000,25,0.01,0.75],
+    [(58000,25,0.01,0.75)],
     dtype=[("market_rate_per_kW",int),
            ("system_lifetime",int),
            ("annual_maintenance_ratio",float),
@@ -9,7 +9,7 @@ RESIDENTIAL_CONFIG=np.array(
 
 
 COMMERCIAL_CONFIG=np.array(
-    [6,48000,0.089,0.40,0.02,0.25],
+    [(6,48000,0.05,0.40,0.02,0.25)],
     dtype=[
         ("working_days_per_week",int),
         ("market_rate_per_kW",float),
@@ -19,10 +19,19 @@ COMMERCIAL_CONFIG=np.array(
         ("tax_bracket",float)
         ])
 
+ESCALATION_CONFIG=np.array(
+    [(0.03,0.05,0.07)],
+    dtype=[("electricity_price_escalation",float),
+    ("maintenance_escalation",float),
+    ("discount_rate",float)]
+)
+
+
 PANEL=np.array(
-    [25,0.75],
+    [(25,0.75,0.995)],
     dtype= [("life",int),
-            ("performance_factor",float)
+            ("performance_factor",float),
+            ("efficiency_loss",float)
             ])
 
 CITY = np.array([
@@ -73,6 +82,23 @@ SUBSIDIES=np.array([
 
 KW_BRACKETS = np.array(["1kW", "2kW", "3kW", "4kW", "5kW"])
 
+DAYS_IN_A_MONTH=np.array([
+    (1,31),
+    (2,28),
+    (3,31),
+    (4,30),
+    (5,31),
+    (6,30),
+    (7,31),
+    (8,31),
+    (9,30),
+    (10,31),
+    (11,30),
+    (12,31)],
+    dtype=[("month",int),("no_of_days",int)]
+)
+
+MONTHS=np.array(["January","February","March","April","May","June","July","August","September","October","November","December"])
 '''
 # v1 without numpy configs
 
