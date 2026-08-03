@@ -1,0 +1,115 @@
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+1. Loading Dataset-
+
+I didnt knew how to get any dataset and start working on it....
+I tried to download it, but real world messy datasets are very heavy.
+I found one alternative i.e. to download from NREL NSRDB.
+
+I went on it's main site - https://developer.nlr.gov/docs/solar/nsrdb/
+
+# What i learnt from the Data Download Guide-
+
+What is API-
+Short for Application Programming Interface API is the waiter that takes 
+the client's (you) request to the kitchen(the server) and fetches the 
+data to your device.
+
+The Request: 
+Your application initiates an API call to ask for specific information. 
+This is done using formatted URLs called Endpoints combined with HTTP 
+methods like GET (to fetch data) or POST (to send data).
+
+The Security Check: 
+Most platforms require an API Key (a unique digital passport) to verify 
+who you are and prevent spam.
+
+The Response: 
+The remote server processes the request and sends back raw text data, 
+universally formatted as JSON or XML, which your application automatically 
+interprets and displays.
+
+API key- a code or password for the servers to authenticate you. 
+Authentication: It proves to the server exactly who is knocking on the door.
+Access Control: It unlocks specific data permissions assigned to your account.
+Usage Tracking: It allows the provider to monitor how many requests you make to 
+                prevent abuse and calculate billing.
+
+How does it matter for this project -
+The NREL NSRDB has API Keys which it gives to the clients for getting data.
+The size of these datasets is very big, and sometimes users ask for huge datasets,
+even bigger than the API can handle.
+So rates also known as API key rate limit is set in order to prevent burdening on 
+the server and crashing.
+
+# Pulling the dataset-
+
+Pulling basically wasnt actually by using url because using url bounds me to staying 
+to the internet everytime.
+
+So i downloaded it
+for downloading i used an url with my api key, name etc. 
+and it directly downloaded in my computer.
+at one time only one years data gets downloaded. so first i downloaded the 202 year 
+data for the latitude = 39.74 & longitude = -105.18.
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+
+# DATA CLEANING-
+
+1. 
+The top row removal syntax in pandas-
+df = pd.read_csv("file.csv", skiprows = 2)
+"adding skiprows"
+
+# Feeding the data
+When i cleaned the data, then also, in this VScode, where different cells
+are not available, i had to run the read_csv function everytime when i ran the program.. and i also didnt want to run the data cleaning process again. 
+
+So, i saved the cleaned data into a new data file called cleaned_data.csv in the data folder.
+
+now everytime i need to use the cleaned dataset i will use read_csv function on this one. and not the old one.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+13/07/2026 - 
+
+I made a class based workflow in python for automatically cleaning the dataset....
+Its a basic one yet, which does not check the required columns.
+
+i made a main.py file as well in which i did basic inputting by the user and connected the
+class with objects.... right now in the main file the program takes the input of the downloaded file name,
+and cleans the data using functions in the Data_Handling class and stores the cleaned_data in a new file whose
+filename is providied by the user.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+14/07/2007-
+
+Today i am working on the pipeline that returns the data quality of the data...
+this will include - 
+
+1. Missing values -
+    - Number of missing values per column.
+    - and the percentage of missing value in that column
+    - Output will be a dictionary.
+
+2. The Duplicates - 
+    Duplicate rows can skew analysis and waste the memory.
+    - Total count of exact duplicates and the specific subsets of data.
+
+3. Data Types (Data Integrity)-
+    E.g. the data points stored as text will break the visualization part
+    - The data type of each column e.g., float, integer, object/string, datetime
+
+4. Statistical Summaries and Outliers - 
+    - Count, mean, standard deviation, minimums, maximums, and quartiles (25%, 50%, 75%).
+
+5. Categorical Consistency -
+    - Unique values, frequency counts, and inconsistencies like trailing spaces or mixed casing.
+
+6. Zeroes and Negative Values
+    - Count of zeroes or unexpected negative values in columns that strictly require positive numbers.
+    
+
+
+
+ 

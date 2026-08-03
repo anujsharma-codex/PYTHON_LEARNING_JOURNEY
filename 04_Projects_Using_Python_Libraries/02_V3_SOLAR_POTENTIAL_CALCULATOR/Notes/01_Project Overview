@@ -1,0 +1,81 @@
+# Pillar 1 — Real Data Ingestion & Validation
+
+Accepts any NSRDB-format CSV
+Auto-detects and skips metadata rows
+Validates that required columns (GHI, Month, Day, Hour) exist
+Reports data quality: missing values, outliers, sensor errors (negative GHI at daytime)
+
+
+# Pillar 2 — Feature Engineering
+
+Calculates Peak Sun Hours per day from raw hourly GHI
+Builds a Monthly Seasonal Profile (12 PSH averages)
+Identifies the best and worst solar months of the year
+Computes Capacity Factor (actual generation ÷ theoretical maximum)
+
+
+# Pillar 3 — Solar Generation Modeling
+
+Takes user inputs: panel wattage, count, performance factor
+Uses the real monthly PSH (from Pillar 2) instead of a hardcoded guess
+Produces a month-by-month energy generation forecast as a DataFrame
+Projects 25-year lifetime energy accounting for 0.5% annual panel degradation
+
+
+# Pillar 4 — Financial Analysis
+
+Gross cost, net investment (after subsidies)
+25-year savings trajectory with electricity price escalation
+Levelized Cost of Energy (LCOE)
+Net Present Value (NPV) and exact payback year
+Returns the full financial model as an exportable DataFrame
+
+
+# Pillar 5 — Visual Report
+
+Plot 1: Monthly GHI bar chart (Seasonal Solar Profile)
+Plot 2: 25-year cumulative savings line chart with payback crossover marked
+Plot 3: Hourly GHI heatmap (Month × Hour of day) — the one that will genuinely impress people
+Saves all charts as PNG files automatically
+
+
+Proposed structure- 
+
+V3_SOLAR_POTENTIAL_CALCULATOR/
+│
+├── data/
+│   └── dataset.csv              ← Your NSRDB file goes here
+│
+├── Solar/
+│   ├── data_pipeline.py         ← Pillar 1 & 2 (ingestion + feature engineering)
+│   ├── solarcalculator.py       ← Pillar 3 (generation modeling)
+│   ├── financialcalculator.py   ← Pillar 4 (financial analysis)
+│   ├── plots.py                 ← Pillar 5 (all charts)
+│   └── utils.py                 ← Formatting helpers
+│
+├── output/
+│   ├── monthly_profile.png
+│   ├── financial_trajectory.png
+│   └── solar_heatmap.png
+│
+└── main.py                      ← User inputs CLI + orchestrates everything
+
+What all to report in the Data Quality report-
+1. Missing values -
+    - Number of missing values per column.
+    - and the percentage of missing value in that column
+    - Output will be a dictionary.
+
+2. The Duplicates - 
+    Duplicate rows can skew analysis and waste the memory.
+    - Total count of exact duplicates and the specific subsets of data.
+
+3. Data Types (Data Integrity)-
+    E.g. the data points stored as text will break the visualization part
+    - The data type of each column e.g., float, integer, object/string, datetime
+
+4. Statistical Summaries and Outliers - 
+    - Count, mean, standard deviation, minimums, maximums, and quantiles (25%, 50%, 75%).
+
+5. Zeroes and Negative Values
+    - Count of zeroes or unexpected negative values in columns that strictly require positive numbers.
